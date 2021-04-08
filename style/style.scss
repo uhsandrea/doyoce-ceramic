@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
+
+$black: #4e4e4e;
+$background: #f2f1f0;
+
+@mixin flex-box($direction: row, $jc: center, $ai: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $jc;
+  align-items: $ai;
+}
+
+/* Master */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Lexend", sans-serif;
+}
+
+/* Enter Page */
+.enter-page {
+  @include flex-box(column);
+  background-color: $background;
+
+  .shadow {
+    width: 40vw;
+    min-width: 350px;
+    height: 40vw;
+    min-height: 350px;
+    box-shadow: 0 0 8px 8px $background inset;
+    background-image: url("../images/enter.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-top: 10px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+
+    div {
+      border: 2px solid $black;
+      padding: 5px;
+      color: $black;
+    }
+
+    &:hover {
+      cursor: default;
+
+      div {
+        color: $background;
+        background-color: $black;
+      }
+    }
+
+    &:visited {
+      color: inherit;
+    }
+  }
+}
+
+/* Home Page */

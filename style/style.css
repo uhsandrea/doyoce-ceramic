@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
+/* Master */
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Lexend", sans-serif;
+}
+
+/* Enter Page */
+.enter-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #f2f1f0;
+}
+
+.enter-page .shadow {
+  width: 40vw;
+  min-width: 350px;
+  height: 40vw;
+  min-height: 350px;
+  -webkit-box-shadow: 0 0 8px 8px #f2f1f0 inset;
+          box-shadow: 0 0 8px 8px #f2f1f0 inset;
+  background-image: url("../images/enter.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.enter-page a {
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-top: 10px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.enter-page a div {
+  border: 2px solid #4e4e4e;
+  padding: 5px;
+  color: #4e4e4e;
+}
+
+.enter-page a:hover {
+  cursor: default;
+}
+
+.enter-page a:hover div {
+  color: #f2f1f0;
+  background-color: #4e4e4e;
+}
+
+.enter-page a:visited {
+  color: inherit;
+}
+
+/* Home Page */
+/*# sourceMappingURL=style.css.map */
