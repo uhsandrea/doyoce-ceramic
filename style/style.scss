@@ -1,13 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
 
-$black: #4e4e4e;
-$background: #f2f1f0;
+$black: #161616;
+$background: #ebeae8;
 
 @mixin flex-box($direction: row, $jc: center, $ai: center) {
   display: flex;
   flex-direction: $direction;
   justify-content: $jc;
   align-items: $ai;
+}
+
+@mixin section-size() {
+  padding: 10vh 8vw;
+  height: 110vh;
+  min-width: 400px;
 }
 
 /* Master */
@@ -19,14 +25,24 @@ $background: #f2f1f0;
 
 body {
   width: 100%;
-  min-height: 100vh;
   font-family: "Lexend", sans-serif;
+  background-color: $background;
+  color: $black;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:visited {
+    color: inherit;
+  }
 }
 
 /* Enter Page */
 .enter-page {
   @include flex-box(column);
-  background-color: $background;
+  height: 100vh;
 
   .shadow {
     width: 40vw;
@@ -34,13 +50,12 @@ body {
     height: 40vw;
     min-height: 350px;
     box-shadow: 0 0 8px 8px $background inset;
-    background-image: url("../images/enter.jpg");
+    background-image: url(../images/enter.jpg);
     background-position: center;
     background-size: cover;
   }
 
   a {
-    text-decoration: none;
     text-transform: uppercase;
     margin-top: 10px;
     font-size: 13px;
@@ -49,8 +64,8 @@ body {
 
     div {
       border: 2px solid $black;
-      padding: 5px;
-      color: $black;
+      padding: 6px;
+      transition: background-color 0.8s, color 0.8s;
     }
 
     &:hover {
@@ -61,11 +76,224 @@ body {
         background-color: $black;
       }
     }
-
-    &:visited {
-      color: inherit;
-    }
   }
 }
 
 /* Home Page */
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  @include flex-box($jc: space-between);
+  height: 10vh;
+  padding: 0 8vw;
+  background-color: $background;
+  z-index: 10;
+
+  .logo {
+    font-size: 1.2em;
+  }
+
+  ul {
+    @include flex-box();
+    list-style: none;
+
+    li {
+      padding-left: 25px;
+
+      a {
+        transition: color 0.7s;
+
+        &:hover {
+          color: #aa8d61;
+        }
+      }
+    }
+  }
+}
+
+aside {
+  position: fixed;
+  width: 8vw;
+  height: 100%;
+  top: 0;
+  right: 0;
+  @include flex-box(column);
+
+  i {
+    margin: 20px 0;
+
+    &:hover {
+      color: #aa8d61;
+    }
+  }
+}
+
+#home {
+  @include section-size();
+
+  .content {
+    background-image: url(../images/home.jpg);
+    background-position: center;
+    background-size: cover;
+    @include flex-box(column);
+    width: 100%;
+    height: 100%;
+  }
+
+  .first-line {
+    font-size: 5em;
+  }
+
+  .second-line {
+    font-size: 3em;
+    margin-top: 20px;
+  }
+}
+
+#about {
+  @include section-size();
+  font-size: 1.1em;
+
+  .content {
+    background-color: white;
+    @include flex-box($jc: space-evenly);
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    width: 40%;
+  }
+
+  div {
+    @include flex-box(column);
+
+    span {
+      padding: 10px;
+    }
+  }
+}
+
+#gallery {
+  padding: 10vh 10vw;
+  min-width: 400px;
+
+  .content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: minmax(300px, 350px);
+    grid-gap: 30px;
+
+    .gallery__item-wrapper {
+      position: relative;
+      @include flex-box();
+
+      .gallery__item-image {
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .gallery__item-image.image-blur {
+        transition: 0.3s;
+        filter: brightness(19%);
+      }
+
+      .fa-heart {
+        position: absolute;
+        display: none;
+      }
+
+      .fa-heart.border-heart {
+        color: $background;
+      }
+
+      .fa-heart.selected-heart {
+        color: rgba(255, 65, 65, 0.993);
+      }
+
+      .fa-heart.active {
+        display: block;
+      }
+    }
+  }
+}
+
+#contact {
+  padding: 10vh 8vw 0 8vw;
+  height: 90vh;
+
+  .content {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    div {
+      height: 100%;
+      width: 50%;
+    }
+
+    .contact-info {
+      @include flex-box(column);
+
+      h3 {
+        margin-bottom: 30px;
+      }
+
+      h4 {
+        margin-bottom: 12px;
+      }
+
+      form {
+        @include flex-box(column);
+        margin-top: 30px;
+
+        .type-input {
+          border: none;
+          border-bottom: 1px solid $black;
+          padding: 7px;
+          width: 100%;
+          margin-top: 10px;
+
+          &:hover {
+            border-bottom-color: rgb(161, 160, 160);
+          }
+
+          &:focus {
+            background-color: $background;
+            outline: none;
+          }
+        }
+
+        input[type="submit"] {
+          border: solid 1px $black;
+          padding: 6px;
+          margin-top: 20px;
+
+          &:hover {
+            background-color: $black;
+            color: $background;
+          }
+
+          &:focus {
+            background-color: $background;
+            outline: none;
+          }
+        }
+      }
+    }
+
+    .map {
+      @extend div;
+      @include flex-box();
+    }
+  }
+}
+
+footer {
+  height: 10vh;
+  @include flex-box();
+}
