@@ -1,5 +1,13 @@
+const toggleBtn = document.querySelector(".fa-bars");
+const navBar = document.querySelector("nav");
+const snsBar = document.querySelector("aside");
 const galleryImages = document.querySelectorAll(".gallery__item-wrapper");
 const hearts = document.querySelectorAll(".fa-heart");
+
+toggleBtn.addEventListener("click", () => {
+  navBar.classList.toggle("active");
+  snsBar.classList.toggle("active");
+});
 
 galleryImages.forEach(image => {
   image.addEventListener("mouseover", () => {

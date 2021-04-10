@@ -13,7 +13,6 @@ $background: #ebeae8;
 @mixin section-size() {
   padding: 10vh 8vw;
   height: 110vh;
-  min-width: 400px;
 }
 
 /* Master */
@@ -25,6 +24,7 @@ $background: #ebeae8;
 
 body {
   width: 100%;
+  min-width: 300px;
   font-family: "Lexend", sans-serif;
   background-color: $background;
   color: $black;
@@ -46,9 +46,9 @@ a {
 
   .shadow {
     width: 40vw;
-    min-width: 350px;
+    min-width: 300px;
     height: 40vw;
-    min-height: 350px;
+    min-height: 300px;
     box-shadow: 0 0 8px 8px $background inset;
     background-image: url(../images/enter.jpg);
     background-position: center;
@@ -85,7 +85,7 @@ header {
   position: fixed;
   top: 0;
   @include flex-box($jc: space-between);
-  height: 10vh;
+  min-height: 10vh;
   padding: 0 8vw;
   background-color: $background;
   z-index: 10;
@@ -99,34 +99,35 @@ header {
     list-style: none;
 
     li {
-      padding-left: 25px;
+      margin-left: 25px;
+      transition: color 0.7s;
 
-      a {
-        transition: color 0.7s;
+      &:hover {
+        color: #aa8d61;
+      }
+    }
+  }
 
-        &:hover {
-          color: #aa8d61;
-        }
+  aside {
+    position: fixed;
+    width: 8vw;
+    height: 100%;
+    top: 0;
+    right: 0;
+    @include flex-box(column);
+
+    i {
+      margin: 20px 0;
+
+      &:hover {
+        color: #aa8d61;
       }
     }
   }
 }
 
-aside {
-  position: fixed;
-  width: 8vw;
-  height: 100%;
-  top: 0;
-  right: 0;
-  @include flex-box(column);
-
-  i {
-    margin: 20px 0;
-
-    &:hover {
-      color: #aa8d61;
-    }
-  }
+.hamburger-bars {
+  display: none;
 }
 
 #home {
@@ -139,10 +140,12 @@ aside {
     @include flex-box(column);
     width: 100%;
     height: 100%;
+    padding: 50px;
   }
 
   .first-line {
     font-size: 5em;
+    text-align: center;
   }
 
   .second-line {
@@ -160,29 +163,29 @@ aside {
     @include flex-box($jc: space-evenly);
     width: 100%;
     height: 100%;
-  }
 
-  img {
-    width: 40%;
-  }
+    img {
+      width: 40%;
+      min-width: 370px;
+    }
 
-  div {
-    @include flex-box(column);
+    div {
+      @include flex-box(column);
 
-    span {
-      padding: 10px;
+      span {
+        padding: 10px;
+      }
     }
   }
 }
 
 #gallery {
-  padding: 10vh 10vw;
-  min-width: 400px;
+  padding: 10vh 8vw;
 
   .content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: minmax(300px, 350px);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-auto-rows: minmax(300px, 380px);
     grid-gap: 30px;
 
     .gallery__item-wrapper {
@@ -230,33 +233,42 @@ aside {
     width: 100%;
     height: 100%;
     display: flex;
+    padding: 20px;
 
     div {
       height: 100%;
       width: 50%;
     }
 
-    .contact-info {
+    .contact {
       @include flex-box(column);
 
-      h3 {
-        margin-bottom: 30px;
-      }
-
-      h4 {
-        margin-bottom: 12px;
-      }
-
-      form {
+      .info {
         @include flex-box(column);
-        margin-top: 30px;
+        height: 30%;
+
+        h3 {
+          margin-bottom: 30px;
+        }
+
+        h4 {
+          margin-bottom: 12px;
+          min-width: 186px;
+          text-align: center;
+        }
+      }
+
+      .email {
+        @include flex-box(column);
 
         .type-input {
           border: none;
           border-bottom: 1px solid $black;
           padding: 7px;
-          width: 100%;
+          width: 80%;
           margin-top: 10px;
+          min-width: 300px;
+          font-family: "Lexend", sans-serif;
 
           &:hover {
             border-bottom-color: rgb(161, 160, 160);
@@ -272,6 +284,8 @@ aside {
           border: solid 1px $black;
           padding: 6px;
           margin-top: 20px;
+          font-family: "Lexend", sans-serif;
+          color: $black;
 
           &:hover {
             background-color: $black;
@@ -289,6 +303,12 @@ aside {
     .map {
       @extend div;
       @include flex-box();
+
+      iframe {
+        min-width: 300px;
+        width: 70%;
+        height: 70%;
+      }
     }
   }
 }
@@ -296,4 +316,195 @@ aside {
 footer {
   height: 10vh;
   @include flex-box();
+}
+
+@media screen and (max-width: 950px) {
+  #about {
+    .content {
+      @include flex-box(column);
+
+      img {
+        width: 50%;
+        min-width: 300px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  #home {
+    .first-line {
+      font-size: 4.5em;
+      text-align: center;
+    }
+
+    .second-line {
+      font-size: 2.5em;
+      margin-top: 20px;
+    }
+  }
+  #contact {
+    .content {
+      @include flex-box(column);
+      padding-bottom: 30px;
+
+      div {
+        width: 100%;
+        height: 50%;
+      }
+
+      .contact {
+        @include flex-box(row);
+
+        .info {
+          width: 40%;
+          height: 100%;
+
+          h3 {
+            font-size: 1em;
+          }
+
+          h4 {
+            font-size: 0.8em;
+          }
+        }
+
+        .email {
+          width: 60%;
+          height: 100%;
+
+          .type-input {
+            min-width: 250px;
+          }
+        }
+      }
+
+      .map {
+        iframe {
+          width: 80%;
+          height: 90%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  header {
+    @include flex-box(column, center, flex-start);
+    padding: 0;
+
+    .logo {
+      margin-left: 8vw;
+      height: 10vh;
+      @include flex-box(column, center, flex-start);
+    }
+
+    nav {
+      width: 100%;
+      display: none;
+
+      ul {
+        @include flex-box(column);
+
+        li {
+          margin-left: 0;
+          width: 100%;
+          text-align: center;
+          transition: background-color 1s;
+
+          &:hover {
+            background-color: #b8a07bcb;
+            color: $black;
+          }
+
+          a {
+            display: block;
+            padding: 10px 0 10px 0;
+          }
+        }
+      }
+    }
+
+    aside {
+      position: static;
+      @include flex-box();
+      width: 100%;
+      margin: 10px 0 20px 0;
+      display: none;
+
+      a {
+        padding: 0 15px;
+      }
+    }
+
+    nav.active {
+      display: block;
+    }
+
+    aside.active {
+      display: flex;
+    }
+  }
+
+  .hamburger-bars {
+    position: fixed;
+    z-index: 20;
+    right: 8vw;
+    top: 0vh;
+    height: 10vh;
+    display: flex;
+    place-items: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  #home {
+    padding: 10vh 0 5vh 0;
+    height: 105vh;
+    .first-line {
+      font-size: 3.5em;
+    }
+    .second-line {
+      font-size: 2em;
+      text-align: center;
+    }
+  }
+
+  #about {
+    padding: 10vh 0 5vh 0;
+    height: 105vh;
+
+    span {
+      font-size: 0.8em;
+    }
+  }
+
+  #gallery {
+    padding: 10vh 0vw 5vh 0vw;
+  }
+
+  #contact {
+    padding: 10vh 0 0 0;
+    height: 130vh;
+
+    .content {
+      padding: 50px 20px;
+      .contact {
+        @include flex-box(column);
+
+        .info {
+          height: 40%;
+          width: 100%;
+        }
+
+        .email {
+          height: 60%;
+        }
+      }
+    }
+  }
 }
