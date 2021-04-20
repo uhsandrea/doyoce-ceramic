@@ -11,12 +11,12 @@ toggleBtn.addEventListener("click", () => {
 
 galleryImages.forEach(image => {
   image.addEventListener("mouseover", () => {
-    image.querySelector(".gallery__item-image").classList.add("image-blur");
-    image.querySelector(".gallery__item-image").nextElementSibling.classList.add("active");
+    image.querySelector(".gallery__item-image").classList.toggle("image-blur");
+    image.querySelector(".fa-heart").classList.toggle("active");
   });
   image.addEventListener("mouseout", () => {
-    image.querySelector(".gallery__item-image").classList.remove("image-blur");
-    image.querySelector(".gallery__item-image").nextElementSibling.classList.remove("active");
+    image.querySelector(".gallery__item-image").classList.toggle("image-blur");
+    image.querySelector(".fa-heart").classList.toggle("active");
   });
 });
 
